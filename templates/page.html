@@ -11,20 +11,20 @@
 {% if page.toc and page.extra.add_toc %}
 Table of contents
 <ul>
-{% for h1 in page.toc %}
+    {% for h1 in page.toc %}
     <li>
         <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
         {% if h1.children %}
-            <ul>
-                {% for h2 in h1.children %}
-                    <li>
-                        <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <ul>
+            {% for h2 in h1.children %}
+            <li>
+                <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
         {% endif %}
     </li>
-{% endfor %}
+    {% endfor %}
 </ul>
 {% endif %}
 
@@ -33,20 +33,20 @@ Table of contents
 
 {% block footer %}
 <p class="taxonomies">
-{% if page.taxonomies.tags %}
-{% for tag in page.taxonomies.tags %}
-<a href="/tags/{{ tag | slugify }}">#{{ tag }}</a>
-{% endfor %}
-{% if page.taxonomies.categories %}
-{% for category in page.taxonomies.categories %}
-<a href="/categories/{{ category | slugify }}">+{{ category }}</a>
-{% endfor %}
-{% endif %}
-{% if page.taxonomies.contexts %}
-{% for context in page.taxonomies.contexts %}
-<a href="/contexts/{{ context | slugify }}">@{{ context }}</a>
-{% endfor %}
-{% endif %}
-{% endif %}
+    {% if page.taxonomies.tags %}
+    {% for tag in page.taxonomies.tags -%}
+    <a href="/tags/{{ tag | slugify }}">#{{ tag }}</a>
+    {%- endfor %}
+    {% if page.taxonomies.categories %}
+    {% for category in page.taxonomies.categories -%}
+    <a href="/categories/{{ category | slugify }}">+{{ category }}</a>
+    {%- endfor %}
+    {% endif %}
+    {% if page.taxonomies.contexts %}
+    {% for context in page.taxonomies.contexts -%}
+    <a href="/contexts/{{ context | slugify }}">@{{ context }}</a>
+    {%- endfor %}
+    {% endif %}
+    {% endif %}
 </p>
 {% endblock footer %}
