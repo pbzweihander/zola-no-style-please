@@ -1,4 +1,5 @@
 ---
+insert_anchor_links: left
 ---
 
 - info
